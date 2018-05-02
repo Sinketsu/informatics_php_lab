@@ -7,8 +7,15 @@
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     ];
     $pdo = new PDO($dsn, $user, $pass, $opt);
-    $stmt = $pdo->prepare('SELECT * FROM users');
-    $stmt->execute();
-    foreach ($stmt as $row) {
-        print $row['password'] . "\n";
+
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $stmt = $pdo->prepare('SELECT username FROM users WHERE username = :username');
+    $stmt->execute([$username]);
+    if ($row = $stmt->fetch()) {
+        print 'exist!';
+    } else {
+        print 'not exist!';
     }
