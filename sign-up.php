@@ -1,12 +1,8 @@
 <?php
-    $user = "root";
-    $pass = "swordart1337";
-    $dsn = "mysql:host=localhost;dbname=php_db";
-    $opt = [
-        PDO::ATTR_PERSISTENT => true,
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    ];
-    $pdo = new PDO($dsn, $user, $pass, $opt);
+    include 'utils/dbworker.php';
+    include 'utils/auth.php';
+
+    $pdo = get_PDO();
 
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -35,5 +31,8 @@
         'password' => $hashed_password
     ]);
 
+    $cookie = login($username);
+    setcookie('sess_id', $cookie, time() + 60*60*24*14, '', '', true, true);
 
-
+    header("Location: /index.html", true, 301);
+    exit();
