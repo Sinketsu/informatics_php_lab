@@ -18,4 +18,7 @@
         setcookie('sess_id', $cookie, time() + 60*60*24*14, '', '', true, true);
         header("Location: /index.php", true, 301);
         exit();
+    } else {
+        header("Location: /sign-in.html", true, 303);
+        exit();
     }
