@@ -14,8 +14,9 @@
 
     $stmt = $pdo->prepare('SELECT username FROM users WHERE username = :username');
     $stmt->execute([$username]);
-    if ($row = $stmt->fetch()) {
-        print 'exist!';
+    $row = $stmt->fetch();
+    if ($row) {
+        echo 'exist!';
     } else {
-        print 'not exist!';
+        echo 'not exist!';
     }
