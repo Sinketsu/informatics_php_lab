@@ -29,18 +29,20 @@
                 </div>
             </div>
             <div class="col text-center vcenter">
-                <form class="form-signup">
+                <form class="form-signup" action="sign-up.php" method="post">
                     <h1 class="h3 mb-3 font-weight-normal">Do you want to join?</h1>
 
                     <label for="inputNickname" class="sr-only">Nickname</label>
-                    <input type="text" id="inputNickname" class="form-control" placeholder="Nickname" required autofocus>
+                    <input type="text" id="inputNickname" name="username" class="form-control"
+                           placeholder="Nickname" required autofocus>
 
                     <label for="inputEmail" class="sr-only">Email</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                    <input type="email" id="inputEmail" name="email" class="form-control"
+                           placeholder="Email" required autofocus>
 
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password"
-                           aria-describedby="passwordHelp" required>
+                    <input type="password" id="inputPassword" name="password" class="form-control"
+                           placeholder="Password" aria-describedby="passwordHelp" required>
                     <br>
                     <button class="btn btn-lg btn-primary btn-block form-control" type="submit">
                         Join!
