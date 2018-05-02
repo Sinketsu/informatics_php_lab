@@ -2,7 +2,20 @@
     include_once 'dbworker.php';
 
     function authenticate($username, $password) {
-        // TODO check passwd
+        $pdo = get_PDO();
+
+        $stmt = $pdo->prepare("SELECT username,password FROM users WHERE username = :username");
+        $stmt->execute(['username' => $username]);
+
+        $row = $stmt->fetch();
+        $db_password = explode('$', $row['password']);
+        $iterations = (int)$db_password[0];
+        $salt = $db_password[1];
+        $hash = $db_password[2];
+
+        $hashed_password = hash_pbkdf2('sha384', $password, $salt, $iterations);
+
+        return hash_equals($hash, $hashed_password);
     }
 
     function login($username) {
@@ -12,6 +25,19 @@
         $randomBytes = fread($fp, 24);
         fclose($fp);
         $session_key = base64_encode($randomBytes);
+
+        $stmt = $pdo->prepare("SELECT * FROM sessions WHERE session_key = :key");
+        $stmt->execute(['key' => $session_key]);
+        $row = $stmt->fetch();
+        while ($row) {
+            $fp = fopen('/dev/urandom', 'r');
+            $randomBytes = fread($fp, 24);
+            fclose($fp);
+            $session_key = base64_encode($randomBytes);
+
+            $stmt->execute(['key' => $session_key]);
+            $row = $stmt->fetch();
+        }
 
         $stmt = $pdo->prepare("SELECT id FROM users WHERE username = :username");
         $stmt->execute(['username' => $username]);
