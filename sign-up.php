@@ -1,6 +1,6 @@
 <?php
-    include 'utils/dbworker.php';
-    include 'utils/auth.php';
+    include_once 'utils/dbworker.php';
+    include_once 'utils/auth.php';
 
     $pdo = get_PDO();
 

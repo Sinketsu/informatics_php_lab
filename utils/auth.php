@@ -1,5 +1,5 @@
 <?php
-    include 'dbworker.php';
+    include_once 'dbworker.php';
 
     function authenticate($username, $password) {
         // TODO check passwd
