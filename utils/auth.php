@@ -15,7 +15,8 @@
 
         $stmt = $pdo->prepare("SELECT id FROM users WHERE username = :username");
         $stmt->execute(['username' => $username]);
-        $user_id = $stmt[0]['id'];
+
+        $user_id = $stmt->fetch()['id'];
 
         $stmt = $pdo->prepare("INSERT INTO php_db.sessions (session_key, user_id, expiring_time) 
                                     VALUES (:session_key, :user_id, :time)");
