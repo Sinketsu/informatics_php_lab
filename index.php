@@ -30,6 +30,8 @@
         } else
             print '%username%';
     ?>
+    <p><a href="/sign-in.html">Sign in</a></p>
+    <a href="/sign-up.html">Sign up</a>
 </body>
 </html>
 
