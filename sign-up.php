@@ -2,6 +2,12 @@
     include_once 'utils/dbworker.php';
     include_once 'utils/auth.php';
 
+    if ($_SERVER['REQUEST_METHOD'] != 'POST' or !isset($_POST['username']) or !isset($_POST['password']) or
+        !isset($_POST['email'])){
+        header("Location: /error/bad_request.html", true, 303);
+        exit();
+    }
+
     $pdo = get_PDO();
 
     $username = $_POST['username'];
@@ -12,7 +18,7 @@
     $stmt->execute(['username' => $username]);
     $row = $stmt->fetch();
     if ($row) {
-        header("Location: /user_already_exist.html", true, 301);
+        header("Location: /error/user_already_exist.html", true, 301);
         exit();
     }
 
@@ -34,5 +40,5 @@
     $cookie = login($username);
     setcookie('sess_id', $cookie, time() + 60*60*24*14, '', '', true, true);
 
-    header("Location: /index.html", true, 301);
+    header("Location: /index.php", true, 301);
     exit();
