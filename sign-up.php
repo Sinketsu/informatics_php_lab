@@ -13,10 +13,8 @@
     $password = $_POST['password'];
 
     $stmt = $pdo->prepare('SELECT username FROM users WHERE username = :username');
-    $stmt->execute([$username]);
+    $stmt->execute(['email' => $username]);
     $row = $stmt->fetch();
-    print 'Hello!';
-    echo 'Yeah';
     if ($row) {
         echo 'exist!';
     } else {
