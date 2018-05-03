@@ -38,7 +38,7 @@
                 $current_username = null;
                 if (!is_null($user_id)) {
                     $stmt = $pdo->prepare("SELECT username FROM users WHERE id = :id");
-                    $stmt->execute($user_id);
+                    $stmt->execute(['id' => $user_id]);
                     $row = $stmt->fetch();
 
                     $current_username = $row['username'];
@@ -48,7 +48,6 @@
                 $stmt->execute();
 
                 $i = 1;
-                print("username: -- " . $current_username);
                 while($row = $stmt->fetch()) {
                     print "<tr" . ((!is_null($current_username) and $row['username'] === $current_username) ?
                             " class=\"table-warning\"" : "") . ">
