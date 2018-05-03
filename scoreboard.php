@@ -48,7 +48,7 @@
                 $stmt->execute();
 
                 $i = 1;
-                print($current_username);
+                print("username: -- " . $current_username);
                 while($row = $stmt->fetch()) {
                     print "<tr" . ((!is_null($current_username) and $row['username'] === $current_username) ?
                             " class=\"table-warning\"" : "") . ">
