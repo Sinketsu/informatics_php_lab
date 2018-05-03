@@ -15,7 +15,7 @@
     <h5 class="my-0 mr-md-auto font-weight-normal">VoidCTF</h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/main.php">Tasks</a>
-        <a class="p-2 text-dark" href="#">Scoreboard</a>
+        <a class="p-2 text-dark" href="/scoreboard.php">Scoreboard</a>
         <a class="d-inline divider-vertical"></a>
     </nav>
     <?php
@@ -23,8 +23,10 @@
 
         $user_id = auth_get_user($_COOKIE);
         if (!is_null($user_id)) {
-            print '<a class="p-2 text-dark" href="#">Profile</a> 
-                    <a class="p-2 text-dark" href="#">Log out</a>';
+            $username = get_user_by_id($user_id)['username'];
+
+            print "<a class=\"p-2 text-dark\" href=\"#\">$username</a> 
+                        <a class=\"p-2 text-dark\" href=\"#\">Log out</a>";
         } else {
             print '<a class="btn btn-outline-primary mx-1" href="/sign-in.html">Sign in</a>
                     <a class="btn btn-outline-primary mx-1" href="/sign-up.html">Sign up</a>';
