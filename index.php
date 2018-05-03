@@ -7,7 +7,7 @@
 <body>
     Hello,
     <?php
-        include 'utils/dbworker.php';
+        include_once 'utils/dbworker.php';
 
         if (isset($_COOKIE['sess_id'])) {
             $pdo = get_PDO();

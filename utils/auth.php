@@ -57,3 +57,23 @@
 
         return $session_key;
     }
+
+    function auth_get_user($cookies) {
+        if (isset($cookies['sess_id'])) {
+            $pdo = get_PDO();
+            $stmt = $pdo->prepare("SELECT session_key,user_id,expiring_time FROM sessions WHERE
+                                            session_key = :key");
+            $stmt->execute(['key' => $cookies['sess_id']]);
+
+            $row = $stmt->fetch();
+            if (!$row)
+                return null;
+
+            $time = (int)$row['expiring_time'];
+            if (time() > $time)
+                return null;
+
+            return (int)$row['user_id'];
+        } else
+            return null;
+    }
