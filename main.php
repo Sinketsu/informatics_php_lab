@@ -23,8 +23,8 @@
 
         $user_id = auth_get_user($_COOKIE);
         if (!is_null($user_id)) {
-            print '<a class=\"p-2 text-dark\" href=\"#\">Profile</a> 
-                    <a class=\"p-2 text-dark\" href=\"#\">Log out</a>';
+            print '<a class="p-2 text-dark" href="#">Profile</a> 
+                    <a class="p-2 text-dark" href="#">Log out</a>';
         } else {
             print '<a class="btn btn-outline-primary mx-1" href="/sign-in.html">Sign in</a>
                     <a class="btn btn-outline-primary mx-1" href="/sign-up.html">Sign up</a>';
