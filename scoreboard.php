@@ -46,16 +46,16 @@
 
                 $stmt = $pdo->prepare("SELECT username, points FROM users ORDER BY points DESC ");
                 $stmt->execute();
-                echo $current_username;
 
                 $i = 1;
+                print($current_username);
                 while($row = $stmt->fetch()) {
                     print "<tr" . ((!is_null($current_username) and $row['username'] === $current_username) ?
                             " class=\"table-warning\"" : "") . ">
                             <th scope=\"row\" >$i</th>
                             <td >$row[username]</td>
                             <td class=\"font-weight-bold\">$row[points]</td>
-                            </tr>";
+                            </tr>" . "\n";
                     $i++;
                 }
 
