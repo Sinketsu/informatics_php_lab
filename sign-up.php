@@ -40,5 +40,5 @@
     $cookie = login($username);
     setcookie('sess_id', $cookie, time() + 60*60*24*14, '', '', true, true);
 
-    header("Location: /index.php", true, 301);
+    header("Location: /", true, 301);
     exit();
