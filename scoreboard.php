@@ -30,28 +30,36 @@
             <tbody>
             <?php
                 include_once 'utils/dbworker.php';
+                include_once 'utils/auth.php';
 
                 $pdo = get_PDO();
+
+                $user_id = auth_get_user($_COOKIE);
+                $current_username = null;
+                if (!is_null($user_id)) {
+                    $stmt = $pdo->prepare("SELECT username FROM users WHERE id = :id");
+                    $stmt->execute($user_id);
+                    $row = $stmt->fetch();
+
+                    $current_username = $row['username'];
+                }
+
                 $stmt = $pdo->prepare("SELECT username, points FROM users ORDER BY points DESC ");
                 $stmt->execute();
 
                 $i = 1;
                 while($row = $stmt->fetch()) {
-                    print "<tr>
+                    print "<tr" . ((!is_null($current_username) and $row['username'] == $current_username) ?
+                            " class=\"table-warning\"" : "") . ">
                             <th scope=\"row\" >$i</th>
                             <td >$row[username]</td>
                             <td class=\"font-weight-bold\">$row[points]</td>
                             </tr>";
+                    $i++;
                 }
 
 
             ?>
-            <tr class="table-warning">
-                <th scope="row" >4</th>
-                <td >Yola</td>
-                <td class="font-weight-bold">120</td>
-            </tr>
-
             </tbody>
         </table>
     </div>
