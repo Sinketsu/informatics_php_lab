@@ -46,10 +46,11 @@
 
                 $stmt = $pdo->prepare("SELECT username, points FROM users ORDER BY points DESC ");
                 $stmt->execute();
+                echo $current_username;
 
                 $i = 1;
                 while($row = $stmt->fetch()) {
-                    print "<tr" . ((!is_null($current_username) and $row['username'] == $current_username) ?
+                    print "<tr" . ((!is_null($current_username) and $row['username'] === $current_username) ?
                             " class=\"table-warning\"" : "") . ">
                             <th scope=\"row\" >$i</th>
                             <td >$row[username]</td>
