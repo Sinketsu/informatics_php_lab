@@ -39,8 +39,8 @@
                 while($row = $stmt->fetch()) {
                     print "<tr>
                             <th scope=\"row\" >$i</th>
-                            <td >$row\['username'\]</td>
-                            <td class=\"font-weight-bold\">$row\['points'\]</td>
+                            <td >$row[username]</td>
+                            <td class=\"font-weight-bold\">$row[points]</td>
                             </tr>";
                 }
 
