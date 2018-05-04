@@ -30,6 +30,14 @@
         exit();
     }
 
+    $stmt = $pdo->prepare("SELECT * FROM solvings WHERE task_id = :task AND username = :username");
+    $stmt->execute(['task' => $task['id'], 'username' => $user['username']]);
+    $row = $stmt->fetch();
+    if ($row) {
+        header("Location: /task.php?id=$_POST[task]&msg=Flag%20is%20correct%2C%20but%20you%27ve%20already%20passed%20it", true, 303);
+        exit();
+    }
+
     $stmt = $pdo->prepare("INSERT INTO solvings (task_id, username, solving_time) 
                                       VALUES (:task, :username, NOW())");
     $stmt->execute(['task' => $_POST['task'],
