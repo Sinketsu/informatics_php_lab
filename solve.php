@@ -12,6 +12,7 @@
         header("Location: /error/bad_request.html", true, 303);
         exit();
     }
+    $user = get_user_by_id($user);
 
     $pdo = get_PDO();
 
@@ -31,7 +32,8 @@
 
     $stmt = $pdo->prepare("INSERT INTO solvings (task_id, username, solving_time) 
                                       VALUES (:task, :username, NOW())");
-    $stmt->execute(['task' => $_POST['task'], 'username' => $user['username']]);
+    $stmt->execute(['task' => $_POST['task'],
+                    'username' => $user['username']]);
 
     header("Location: /task.php?id=" . $_POST['task'], true, 303);
     exit();
