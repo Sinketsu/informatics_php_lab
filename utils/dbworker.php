@@ -22,3 +22,13 @@
 
         return $row;
     }
+
+    function get_task($task_id) {
+        $pdo = get_PDO();
+
+        $stmt = $pdo->prepare("SELECT * FROM tasks WHERE id = :id");
+        $stmt->execute(['id' => $task_id]);
+        $row = $stmt->fetch();
+
+        return $row;
+    }
