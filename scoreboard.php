@@ -72,6 +72,27 @@
                     $i++;
                 }
 
+                //TEST !!!!!!!!!!!!!!
+                include_once 'utils/array_helper.php';
+
+                $stmt = $pdo->prepare("select
+                                                  users.username,
+                                                  users.points,
+                                                  v_t.st
+                                                FROM users
+                                                  left join (
+                                                              select
+                                                                username,
+                                                                MAX(solving_time) as st
+                                                              from
+                                                                test
+                                                              group by username
+                                                            ) v_t
+                                                  using (username);");
+                $stmt->execute();
+                $arr = $stmt->fetchAll();
+
+                print_r(array_sort($arr));
 
             ?>
             </tbody>
