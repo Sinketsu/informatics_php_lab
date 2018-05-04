@@ -76,14 +76,15 @@
                 $arr = $stmt->fetchAll();
                 $arr = array_sort($arr);
 
-
-                for ($i = 1; $i < count($arr); $i++) {
-                    print "<tr" . ((!is_null($username) and $arr[$i]['username'] === $username) ?
+                $i = 1;
+                foreach ($arr as $row) {
+                    print "<tr" . ((!is_null($username) and $row['username'] === $username) ?
                             " class=\"table-warning\"" : "") . ">
                             <th scope=\"row\" >$i</th>
-                            <td >$arr[i][username]</td>
-                            <td class=\"font-weight-bold\">$arr[i][points]</td>
+                            <td >$row[username]</td>
+                            <td class=\"font-weight-bold\">$row[points]</td>
                             </tr>" . "\n";
+                    $i++;
                 }
             ?>
             </tbody>
