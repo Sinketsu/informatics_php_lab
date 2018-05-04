@@ -78,17 +78,18 @@
                 $stmt = $pdo->prepare("select
                                                   users.username,
                                                   users.points,
-                                                  v_t.st
+                                                  v_t.solv_time
                                                 FROM users
                                                   left join (
                                                               select
                                                                 username,
-                                                                MAX(solving_time) as st
+                                                                MAX(solving_time) as solv_time
                                                               from
                                                                 test
                                                               group by username
                                                             ) v_t
                                                   using (username);");
+
                 $stmt->execute();
                 $arr = $stmt->fetchAll();
 
