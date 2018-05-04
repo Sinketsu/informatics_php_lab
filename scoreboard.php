@@ -67,7 +67,7 @@
                                                                 username,
                                                                 MAX(solving_time) as solv_time
                                                               FROM
-                                                                test
+                                                                solvings
                                                               GROUP BY username
                                                             ) v_t
                                                   USING (username);");
