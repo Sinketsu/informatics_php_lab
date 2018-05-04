@@ -81,8 +81,8 @@
                     print "<tr" . ((!is_null($username) and $arr[$i]['username'] === $username) ?
                             " class=\"table-warning\"" : "") . ">
                             <th scope=\"row\" >$i</th>
-                            <td >$arr[$i][username]</td>
-                            <td class=\"font-weight-bold\">$arr[$i][points]</td>
+                            <td >$arr[i][username]</td>
+                            <td class=\"font-weight-bold\">$arr[i][points]</td>
                             </tr>" . "\n";
                 }
             ?>
