@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="row" style="height: 50px"></div>
-            <form class="row justify-content-center align-items-center" action="/solve.php">
+            <form class="row justify-content-center align-items-center" action="/solve.php" method="post">
                 <input name="id" value="1" hidden>
                 <div class="col-2">
                     <p class="text-white font-weight-bold lead text-">Flag:</p>
