@@ -9,7 +9,7 @@
 
     $user = auth_get_user($_COOKIE);
     if (!$user) {
-        header("Location: /error/bad_request.html", true, 303);
+        header("Location: /sign-in.html", true, 303);
         exit();
     }
     $user = get_user_by_id($user);
@@ -26,7 +26,7 @@
     }
 
     if ($task['flag'] !== $_POST['flag']) {
-        print 'incorrect flag';
+        header("Location: /task.php?id=$_POST[task]&msg=Incorrect%20flag%20%3A%28", true, 303);
         exit();
     }
 
@@ -35,7 +35,7 @@
     $stmt->execute(['task' => $_POST['task'],
                     'username' => $user['username']]);
 
-    header("Location: /task.php?id=" . $_POST['task'], true, 303);
+    header("Location: /task.php?id=$_POST[task]&msg=Flag%20accepted%21", true, 303);
     exit();
 
 

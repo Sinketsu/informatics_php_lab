@@ -84,6 +84,13 @@
                 </div>
                 <button type="submit" class="btn btn-outline-light mb-3 font-weight-bold" >Check >></button>
             </form>
+            <?php
+                if (isset($_GET['msg'])) {
+                    print "<div class=\"row justify-content-center\">
+                                <h5 class=\"text-white font-weight-bold\">$_GET[msg]</h5>
+                           </div>";
+                }
+            ?>
         </div>
     </div>
 </body>
