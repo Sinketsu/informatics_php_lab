@@ -6,3 +6,8 @@ body {
 body {
     background-color: #f5f5f5;
 }
+
+.color-green {
+    /*background-color: #00C800;*/
+    /*filter: alpha(50%);*/
+}
