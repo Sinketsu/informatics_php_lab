@@ -22,6 +22,7 @@
         include_once 'utils/auth.php';
 
         $user_id = auth_get_user($_COOKIE);
+        $username = null;
         if (!is_null($user_id)) {
             $username = get_user_by_id($user_id)['username'];
 
@@ -52,49 +53,38 @@
             <tbody>
             <?php
                 include_once 'utils/dbworker.php';
+                include_once 'utils/array_helper.php';
 
                 $pdo = get_PDO();
 
-                $user_id = auth_get_user($_COOKIE);
-                $current_username = (!is_null($user_id)) ? get_user_by_id($user_id)['username'] : null;
-
-                $stmt = $pdo->prepare("SELECT username, points FROM users ORDER BY points DESC ");
-                $stmt->execute();
-
-                $i = 1;
-                while($row = $stmt->fetch()) {
-                    print "<tr" . ((!is_null($current_username) and $row['username'] === $current_username) ?
-                            " class=\"table-warning\"" : "") . ">
-                            <th scope=\"row\" >$i</th>
-                            <td >$row[username]</td>
-                            <td class=\"font-weight-bold\">$row[points]</td>
-                            </tr>" . "\n";
-                    $i++;
-                }
-
-                //TEST !!!!!!!!!!!!!!
-                include_once 'utils/array_helper.php';
-
-                $stmt = $pdo->prepare("select
+                $stmt = $pdo->prepare("SELECT
                                                   users.username,
                                                   users.points,
                                                   v_t.solv_time
                                                 FROM users
-                                                  left join (
-                                                              select
+                                                  LEFT JOIN (
+                                                              SELECT
                                                                 username,
                                                                 MAX(solving_time) as solv_time
-                                                              from
+                                                              FROM
                                                                 test
-                                                              group by username
+                                                              GROUP BY username
                                                             ) v_t
-                                                  using (username);");
+                                                  USING (username);");
 
                 $stmt->execute();
                 $arr = $stmt->fetchAll();
+                $arr = array_sort($arr);
 
-                print_r(array_sort($arr));
 
+                for ($i = 1; $i < count($arr); $i++) {
+                    print "<tr" . ((!is_null($username) and $arr[$i]['username'] === $username) ?
+                            " class=\"table-warning\"" : "") . ">
+                            <th scope=\"row\" >$i</th>
+                            <td >$arr[$i][username]</td>
+                            <td class=\"font-weight-bold\">$arr[$i][points]</td>
+                            </tr>" . "\n";
+                }
             ?>
             </tbody>
         </table>
