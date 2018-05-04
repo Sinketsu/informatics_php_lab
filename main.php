@@ -49,63 +49,57 @@
                 <p class="card-text">Password manager</p>
             </div>
         </a>
-        <a class="card text-white card-link bg-info rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
+        <a class="card text-white card-link bg-danger rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
             <div class="card-body">
-                <h5 class="card-title ">FORENSICS</h5>
+                <h5 class="card-title ">REVERSE</h5>
                 <h1 class="card-title text-center">105</h1>
                 <p class="card-text">Password manager</p>
             </div>
         </a>
         <a class="card text-white card-link bg-dark rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
             <div class="card-body">
-                <h5 class="card-title ">FORENSICS</h5>
+                <h5 class="card-title ">CRYPTO</h5>
                 <h1 class="card-title text-center">105</h1>
                 <p class="card-text">Pizzaburger</p>
                 <p class="card-text text-white-50">@Sinketsu</p>
             </div>
         </a>
-        <a class="card text-white card-link bg-danger rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
+        <a class="card text-white card-link bg-info rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
             <div class="card-body">
-                <h5 class="card-title ">FORENSICS</h5>
+                <h5 class="card-title ">WEB</h5>
                 <h1 class="card-title text-center">105</h1>
                 <p class="card-text">Password manager</p>
             </div>
         </a>
-        <a class="card text-white card-link bg-danger rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
+        <a class="card text-white card-link bg-primary rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
             <div class="card-body">
-                <h5 class="card-title ">FORENSICS</h5>
+                <h5 class="card-title ">PPC</h5>
                 <h1 class="card-title text-center">105</h1>
                 <p class="card-text">Password manager</p>
             </div>
         </a>
-        <a class="card text-white card-link bg-danger rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
+        <a class="card text-white card-link bg-secondary rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
             <div class="card-body">
-                <h5 class="card-title ">FORENSICS</h5>
+                <h5 class="card-title ">MISC</h5>
                 <h1 class="card-title text-center">105</h1>
                 <p class="card-text">Password manager</p>
             </div>
         </a>
-        <a class="card text-white card-link bg-success rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2 solved" href="#">
+        <a class="card text-white card-link bg-warning rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
             <div class="card-body">
-                <h5 class="card-title ">FORENSICS</h5>
+                <h5 class="card-title ">RECON</h5>
                 <h1 class="card-title text-center">105</h1>
                 <p class="card-text">Password manager</p>
             </div>
-            <div class="overlay align-items-center">
-                <h1 class="col">SOLVED</h1>
-            </div>
         </a>
-        <a class="card text-white card-link bg-info rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2 solved" href="#">
+        <a class="card text-white card-link bg-pink rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
             <div class="card-body">
-                <h5 class="card-title ">FORENSICS</h5>
+                <h5 class="card-title ">PWN</h5>
                 <h1 class="card-title text-center">105</h1>
                 <p class="card-text">Password manager</p>
             </div>
-            <div class="overlay align-items-center">
-                <h1 class="col">SOLVED</h1>
-            </div>
         </a>
-        <a class="card text-white card-link bg-dark rounded-0  col-6 m-0 col-sm-4 col-lg-3 col-xl-2 solved" href="#">
+        <a class="card text-white card-link bg-warning rounded-0  col-6 m-0 col-sm-4 col-lg-3 col-xl-2 solved" href="#">
             <div class="card-body">
                 <h5 class="card-title ">FORENSICS</h5>
                 <h1 class="card-title text-center">105</h1>
@@ -126,21 +120,18 @@
                 <h1 class="col">SOLVED</h1>
             </div>
         </a>
-        <a class="card text-white card-link bg-danger rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
+        <a class="card text-white card-link bg-purple rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
             <div class="card-body">
-                <h5 class="card-title ">FORENSICS</h5>
+                <h5 class="card-title ">JOY</h5>
                 <h1 class="card-title text-center">105</h1>
                 <p class="card-text">Password manager</p>
             </div>
         </a>
-        <a class="card text-white card-link bg-danger rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2 solved" href="#">
+        <a class="card text-white card-link bg-teal rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2" href="#">
             <div class="card-body">
-                <h5 class="card-title ">FORENSICS</h5>
+                <h5 class="card-title ">STEGO</h5>
                 <h1 class="card-title text-center">105</h1>
                 <p class="card-text">Password manager</p>
-            </div>
-            <div class="overlay align-items-center">
-                <h1 class="col">SOLVED</h1>
             </div>
         </a>
     </div>
