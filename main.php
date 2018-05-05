@@ -80,7 +80,7 @@
                 foreach ($tasks as $task) {
                     $author = "";
                     if ($task['author'] !== '') {
-                        $author = "<p class=\"card-text text-white-50\">$task[author]</p>";
+                        $author = "<p class=\"card-text text-white-50\">@$task[author]</p>";
                     }
                     print "<a class=\"card text-white card-link " . $colors[$task['category']] . " rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2\" href=\"task.php?id=$task[id]\">\n";
                     print "\t<div class=\"card-body\">\n";
