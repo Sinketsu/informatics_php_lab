@@ -47,6 +47,18 @@
     $stmt->execute(['task' => $_POST['task'],
                     'username' => $user['username']]);
 
+    $stmt = $pdo->prepare("SELECT cost
+                                    FROM tasks
+                                    WHERE id = :id");
+    $stmt->execute(['id' => $_POST['task']]);
+    $cost = $stmt->fetch()['cost'];
+
+    $stmt = $pdo->prepare("UPDATE users
+                                    SET points = :points
+                                    WHERE username = :username;");
+    $stmt->execute(['points' => $user['points'] + $cost,
+                    'username' => $user['username']]);
+
     header("Location: /task.php?id=$_POST[task]&msg=Flag%20accepted%21", true, 303);
     exit();
 
