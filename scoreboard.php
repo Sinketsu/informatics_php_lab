@@ -40,6 +40,9 @@
             <h4 class="text-secondary ">SCOREBOARD</h4>
         </div>
         <div class="row" style="height: 20px"></div>
+        <div class="row">
+            <p class="font-weight-bold">Your score is: 150</p>
+        </div>
     </div>
     <div class="container">
         <table class="table table-striped table-hover table-light">
