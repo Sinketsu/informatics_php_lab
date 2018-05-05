@@ -6,8 +6,7 @@
         exit();
     }
 
-    //$task = get_task($_GET['id']);
-    $task = ['name' => 'temp_name'];
+    $task = get_task($_GET['id']);
     if (!$task) {
         header("Location: /error/bad_request.html", true, 303);
         exit();
@@ -55,22 +54,32 @@
 
     <div class="container">
         <div class="row" style="height: 50px"></div>
-        <a href="/main.php"><button type="button" class="btn btn-lg btn-outline-dark offset-2 my-3"><< Tasks</button></a>
-        <div class="col-8 offset-2 bg-success">
+        <a href="/main.php">
+            <button type="button" class="btn btn-lg btn-outline-dark offset-2 my-3"><< Tasks</button>
+        </a>
+
+        <?php
+            include_once "utils/array_helper.php";
+
+            $task_author_line = ($task['author'] === "") ?
+                "<p class=\"row text-white justify-content-center\"></p>" :
+                "<p class=\"row text-white justify-content-center\">Author: $task[author]</p>";
+
+            print <<<TASK_BODY
+        <div class="col-8 offset-2 {$colors[$task['category']]}">
             <div class="row">
                 <div class="col-4">
-                    <h5 class="text-white row m-2" style="padding-top: 10px;">FORENSICS</h5>
-                    <h1 class="text-white row m-2">500</h1>
+                    <h5 class="text-white row m-2" style="padding-top: 10px;">$task[category]</h5>
+                    <h1 class="text-white row m-2">$task[cost]</h1>
                 </div>
                 <div class="col align-self-center m-3">
-                    <h3 class="row text-white justify-content-center">Password manager</h3>
-                    <p class="row text-white justify-content-center">Author: Sinketsu</p>
+                    <h3 class="row text-white justify-content-center">$task[name]</h3>
+                    $task_author_line
                 </div>
             </div>
             <div class="row">
                 <div class="col m-1">
-                    <p class="text-white h5 m-4">Flag: flag{123}</p>
-
+                    $task[text]
                 </div>
             </div>
             <div class="row" style="height: 50px"></div>
@@ -84,14 +93,15 @@
                 </div>
                 <button type="submit" class="btn btn-outline-light mb-3 font-weight-bold" >Check >></button>
             </form>
-            <?php
-                if (isset($_GET['msg'])) {
-                    print "<div class=\"row justify-content-center\">
+TASK_BODY;
+            if (isset($_GET['msg'])) {
+                print "<div class=\"row justify-content-center\">
                                 <h5 class=\"text-white font-weight-bold\">$_GET[msg]</h5>
                            </div>";
-                }
-            ?>
-        </div>
+            }
+
+            print "</div>\n";
+        ?>
     </div>
 </body>
 </html>
