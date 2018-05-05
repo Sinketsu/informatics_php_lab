@@ -65,7 +65,7 @@
                                                                     username = :username
                                                                 ) v_t
                                                         ON v_t.task_id = tasks.id
-                                                    ORDER BY task_id;");
+                                                    ORDER BY id;");
                     $stmt->execute(['username' => $username]);
 
                     $tasks = $stmt->fetchAll();
