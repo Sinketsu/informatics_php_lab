@@ -14,7 +14,9 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $stmt = $pdo->prepare('SELECT username FROM users WHERE username = :username');
+    $stmt = $pdo->prepare('SELECT username
+                                    FROM users
+                                    WHERE username = :username');
     $stmt->execute(['username' => $username]);
     $row = $stmt->fetch();
     if ($row) {

@@ -4,7 +4,11 @@
     function authenticate($username, $password) {
         $pdo = get_PDO();
 
-        $stmt = $pdo->prepare("SELECT username,password FROM users WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT
+                                          username,
+                                          password
+                                        FROM users
+                                        WHERE username = :username");
         $stmt->execute(['username' => $username]);
 
         $row = $stmt->fetch();
@@ -26,7 +30,9 @@
         fclose($fp);
         $session_key = base64_encode($randomBytes);
 
-        $stmt = $pdo->prepare("SELECT * FROM sessions WHERE session_key = :key");
+        $stmt = $pdo->prepare("SELECT *
+                                        FROM sessions
+                                        WHERE session_key = :key");
         $stmt->execute(['key' => $session_key]);
         $row = $stmt->fetch();
         while ($row) {
@@ -39,13 +45,15 @@
             $row = $stmt->fetch();
         }
 
-        $stmt = $pdo->prepare("SELECT id FROM users WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT id
+                                        FROM users
+                                        WHERE username = :username");
         $stmt->execute(['username' => $username]);
 
         $user_id = $stmt->fetch()['id'];
 
-        $stmt = $pdo->prepare("INSERT INTO php_db.sessions (session_key, user_id, expiring_time) 
-                                    VALUES (:session_key, :user_id, :time)");
+        $stmt = $pdo->prepare("INSERT INTO php_db.sessions (session_key, user_id, expiring_time)
+                                        VALUES (:session_key, :user_id, :time)");
 
         $expiring_time = time() + 60 * 60 * 24 * 14; // 14 days
 
@@ -61,8 +69,13 @@
     function auth_get_user($cookies) {
         if (isset($cookies['sess_id'])) {
             $pdo = get_PDO();
-            $stmt = $pdo->prepare("SELECT session_key,user_id,expiring_time FROM sessions WHERE
-                                            session_key = :key");
+            $stmt = $pdo->prepare("SELECT
+                                              session_key,
+                                              user_id,
+                                              expiring_time
+                                            FROM sessions
+                                            WHERE
+                                              session_key = :key");
             $stmt->execute(['key' => $cookies['sess_id']]);
 
             $row = $stmt->fetch();

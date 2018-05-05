@@ -16,7 +16,9 @@
 
     $pdo = get_PDO();
 
-    $stmt = $pdo->prepare("SELECT * FROM tasks WHERE id = :id");
+    $stmt = $pdo->prepare("SELECT *
+                                    FROM tasks
+                                    WHERE id = :id");
     $stmt->execute(['id' => $_POST['task']]);
     $task = $stmt->fetch();
 
@@ -30,7 +32,9 @@
         exit();
     }
 
-    $stmt = $pdo->prepare("SELECT * FROM solvings WHERE task_id = :task AND username = :username");
+    $stmt = $pdo->prepare("SELECT *
+                                    FROM solvings
+                                    WHERE task_id = :task AND username = :username");
     $stmt->execute(['task' => $task['id'], 'username' => $user['username']]);
     $row = $stmt->fetch();
     if ($row) {
@@ -39,7 +43,7 @@
     }
 
     $stmt = $pdo->prepare("INSERT INTO solvings (task_id, username, solving_time) 
-                                      VALUES (:task, :username, NOW())");
+                                    VALUES (:task, :username, NOW())");
     $stmt->execute(['task' => $_POST['task'],
                     'username' => $user['username']]);
 
