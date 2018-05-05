@@ -27,8 +27,8 @@
             if (!is_null($user_id)) {
                 $username = get_user_by_id($user_id)['username'];
 
-                print "<a class=\"p-2 text-dark\" href=\"#\">$username</a> 
-                            <a class=\"p-2 text-dark\" href=\"#\">Log out</a>";
+                print "<a class=\"p-2 text-dark\">$username</a> 
+                        <a class=\"p-2 text-dark\" href=\"/logout.php?path=$_SERVER[REQUEST_URI]\">Log out</a>";
             } else {
                 print '<a class="btn btn-outline-primary mx-1" href="/sign-in.html">Sign in</a>
                         <a class="btn btn-outline-primary mx-1" href="/sign-up.html">Sign up</a>';
