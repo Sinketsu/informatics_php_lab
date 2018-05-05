@@ -29,7 +29,7 @@
             $username = $user['username'];
 
             print "<a class=\"p-2 text-dark\" href=\"#\">$username</a> 
-                        <a class=\"p-2 text-dark\" href=\"#\">Log out</a>";
+                        <a class=\"p-2 text-dark\" href=\"/logout.php?path=$_SERVER[REQUEST_URI]\">Log out</a>";
         } else {
             print '<a class="btn btn-outline-primary mx-1" href="/sign-in.html">Sign in</a>
                         <a class="btn btn-outline-primary mx-1" href="/sign-up.html">Sign up</a>';
