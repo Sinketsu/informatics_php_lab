@@ -22,9 +22,11 @@
         include_once 'utils/auth.php';
 
         $user_id = auth_get_user($_COOKIE);
+        $user = null;
         $username = null;
         if (!is_null($user_id)) {
-            $username = get_user_by_id($user_id)['username'];
+            $user = get_user_by_id($user_id);
+            $username = $user['username'];
 
             print "<a class=\"p-2 text-dark\" href=\"#\">$username</a> 
                         <a class=\"p-2 text-dark\" href=\"#\">Log out</a>";
@@ -41,7 +43,11 @@
         </div>
         <div class="row" style="height: 20px"></div>
         <div class="row">
-            <p class="font-weight-bold">Your score is: 150</p>
+            <p class="font-weight-bold ml-3">
+                <?php
+                    print "Your score is: $user[points]";
+                ?>
+            </p>
         </div>
     </div>
     <div class="container">
