@@ -14,3 +14,16 @@
         uasort($result, 'cmp');
         return $result;
     }
+
+    $colors = [
+        'FORENSICS' => 'bg-success',
+        'REVERSE' => 'bg-danger',
+        'CRYPTO' => 'bg-dark',
+        'PPC' => 'bg-primary',
+        'STEGO' => 'bg-teal',
+        'WEB' => 'bg-info',
+        'RECON' => 'bg-warning',
+        'MISC' => 'bg-secondary',
+        'JOY' => 'bg-purple',
+        'PWN' => 'bg-pink',
+    ];

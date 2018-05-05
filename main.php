@@ -46,6 +46,7 @@
     <div class="row">
         <?php
             include_once 'utils/dbworker.php';
+            include_once 'utils/array_helper.php';
 
             $pdo = get_PDO();
 
@@ -76,7 +77,7 @@
             }
 
             foreach ($tasks as $task) {
-                print "<a class=\"card text-white card-link bg-success rounded-0 col-6 m-0 col-sm-4 
+                print "<a class=\"card text-white card-link {$colors[$task['category']]} rounded-0 col-6 m-0 col-sm-4 
                         col-lg-3 col-xl-2\" href=\"task.php?id=$task[id]\">";
                 print "\t<div class=\"card-body\">";
                 print "\t\t<h5 class=\"card-title \">$task[category]</h5>";
