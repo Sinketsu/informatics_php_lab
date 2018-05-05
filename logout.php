@@ -12,5 +12,5 @@
                                     WHERE session_key = :sess_id");
     $stmt->execute(['sess_id' => $_COOKIE['sess_id']]);
 
-    header("Location: /task.php?id=$_GET[path]", true, 303);
+    header("Location: $_GET[path]", true, 303);
     exit();
