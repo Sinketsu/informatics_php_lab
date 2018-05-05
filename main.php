@@ -77,7 +77,6 @@
             }
 
             foreach ($tasks as $task) {
-                print $colors[$task['category']];
                 print "<a class=\"card text-white card-link " . $colors[$task['category']] . " rounded-0 col-6 m-0 col-sm-4 col-lg-3 col-xl-2\" href=\"task.php?id=$task[id]\">\n";
                 print "\t<div class=\"card-body\">\n";
                 print "\t\t<h5 class=\"card-title \">$task[category]</h5>\n";
