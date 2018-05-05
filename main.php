@@ -77,21 +77,21 @@
             }
 
             foreach ($tasks as $task) {
-                print "<a class=\"card text-white card-link {$colors[$task['category']]} rounded-0 col-6 m-0 col-sm-4 
-                        col-lg-3 col-xl-2\" href=\"task.php?id=$task[id]\">";
-                print "\t<div class=\"card-body\">";
-                print "\t\t<h5 class=\"card-title \">$task[category]</h5>";
-                print "\t\t<h1 class=\"card-title text-center\">$task[cost]</h1>";
-                print "\t\t<p class=\"card-text\">$task[name]</p>";
-                print "\t</div>";
+                print "<a class=\"card text-white card-link " . $colors[$task['category']] . " rounded-0 col-6 m-0 col-sm-4 
+                        col-lg-3 col-xl-2\" href=\"task.php?id=$task[id]\">\n";
+                print "\t<div class=\"card-body\">\n";
+                print "\t\t<h5 class=\"card-title \">$task[category]</h5>\n";
+                print "\t\t<h1 class=\"card-title text-center\">$task[cost]</h1>\n";
+                print "\t\t<p class=\"card-text\">$task[name]</p>\n";
+                print "\t</div>\n";
 
                 if (isset($task['solved']) and $task['solved'] == 0) {
-                    print "<div class=\"overlay align-items-center\">";
-                    print "\t<h1 class=\"col\">SOLVED</h1>";
-                    print "</div>";
+                    print "<div class=\"overlay align-items-center\">\n";
+                    print "\t<h1 class=\"col\">SOLVED</h1>\n";
+                    print "</div>\n";
                 }
 
-                print "</a>";
+                print "</a>\n";
             }
 
         ?>
