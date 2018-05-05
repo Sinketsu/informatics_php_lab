@@ -1,0 +1,23 @@
+.bg-pink {
+    background-color: #e91e63;
+}
+
+.bg-pink:hover {
+    background-color: #ad1457;
+}
+
+.bg-purple {
+    background-color: #9c27b0;
+}
+
+.bg-purple:hover {
+    background-color: #6a1b9a;
+}
+
+.bg-teal {
+    background-color: #26a69a ;
+}
+
+.bg-teal:hover {
+    background-color: #00796b;
+}
