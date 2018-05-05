@@ -84,7 +84,7 @@
             </div>
             <div class="row" style="height: 50px"></div>
             <form class="row justify-content-center align-items-center" action="/solve.php" method="post">
-                <input name="task" value="1" hidden>
+                <input name="task" value="$task[id]" hidden>
                 <div class="col-2">
                     <p class="text-white font-weight-bold lead text-">Flag:</p>
                 </div>
