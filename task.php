@@ -102,7 +102,8 @@ TASK_BODY;
 
             print "</div>\n";
         ?>
+        <div class="row" style="height: 50px"></div>
     </div>
-    <div class="row" style="height: 50px"></div>
+
 </body>
 </html>
