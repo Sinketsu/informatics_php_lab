@@ -65,13 +65,14 @@
                                                                     username = :username
                                                                 ) v_t
                                                         ON v_t.task_id = tasks.id
-                                                    ORDER BY id;");
+                                                    ORDER BY category, cost;");
                     $stmt->execute(['username' => $username]);
 
                     $tasks = $stmt->fetchAll();
                 } else {
                     $stmt = $pdo->prepare("SELECT *
-                                                    FROM tasks;");
+                                                    FROM tasks
+                                                    ORDER BY category, cost;");
                     $stmt->execute();
 
                     $tasks = $stmt->fetchAll();
