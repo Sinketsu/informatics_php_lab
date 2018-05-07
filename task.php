@@ -96,8 +96,9 @@
             </form>
 TASK_BODY;
             if (isset($_GET['msg'])) {
+                $msg = filter_var($_GET['msg'], FILTER_SANITIZE_STRING);
                 print "<div class=\"row justify-content-center\">
-                                <h5 class=\"text-white font-weight-bold\">$_GET[msg]</h5>
+                                <h5 class=\"text-white font-weight-bold\">$msg</h5>
                            </div>";
             }
 
