@@ -11,6 +11,7 @@
         header("Location: /error/bad_request.html", true, 303);
         exit();
     }
+    $task['id'] = filter_var($task['id'], FILTER_SANITIZE_NUMBER_INT);
 ?>
 
 <!DOCTYPE html>
