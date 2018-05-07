@@ -66,7 +66,7 @@
                 "<p class=\"row text-white justify-content-center\">Author: $task[author]</p>";
 
             print <<<TASK_BODY
-        <div class="col-8 offset-2 {$colors[$task['category']]}">
+        <div class="col-8 offset-2 {$colors[$task['category']]}-non-hover">
             <div class="row">
                 <div class="col-4">
                     <h5 class="text-white row m-2" style="padding-top: 10px;">$task[category]</h5>

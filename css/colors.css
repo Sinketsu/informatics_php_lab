@@ -21,3 +21,44 @@
 .bg-teal:hover {
     background-color: #00796b;
 }
+
+/*NON HOVER COLORS*/
+.bg-pink-non-hover {
+    background-color: #e91e63;
+}
+
+.bg-purple-non-hover {
+    background-color: #9c27b0;
+}
+
+.bg-teal-non-hover {
+    background-color: #26a69a;
+}
+
+.bg-success-non-hover {
+    background-color: #28a745;
+}
+
+.bg-danger-non-hover {
+    background-color: #dc3545;
+}
+
+.bg-dark-non-hover {
+    background-color: #343a40;
+}
+
+.bg-primary-non-hover {
+    background-color: #007bff;
+}
+
+.bg-info-non-hover {
+    background-color: #17a2b8;
+}
+
+.bg-warning-non-hover {
+    background-color: #ffc107;
+}
+
+.bg-secondary-non-hover {
+    background-color: #6c757d;
+}
