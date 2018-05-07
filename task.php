@@ -26,6 +26,7 @@
 
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="css/task.css" type="text/css" rel="stylesheet">
+    <link href="css/colors.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <nav class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 mb-3 bg-white border-bottom box-shadow">
