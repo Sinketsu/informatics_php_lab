@@ -4,6 +4,8 @@
         exit();
     }
 
+    $task_id = filter_var($_POST['task'], FILTER_SANITIZE_NUMBER_INT);
+
     include_once 'utils/dbworker.php';
     include_once 'utils/auth.php';
 
@@ -19,7 +21,7 @@
     $stmt = $pdo->prepare("SELECT *
                                     FROM tasks
                                     WHERE id = :id");
-    $stmt->execute(['id' => $_POST['task']]);
+    $stmt->execute(['id' => $task_id]);
     $task = $stmt->fetch();
 
     if (!$task) {
@@ -28,7 +30,7 @@
     }
 
     if ($task['flag'] !== $_POST['flag']) {
-        header("Location: /task.php?id=$_POST[task]&msg=Incorrect%20flag%20%3A%28", true, 303);
+        header("Location: /task.php?id=$task_id&msg=Incorrect%20flag%20%3A%28", true, 303);
         exit();
     }
 
@@ -38,19 +40,19 @@
     $stmt->execute(['task' => $task['id'], 'username' => $user['username']]);
     $row = $stmt->fetch();
     if ($row) {
-        header("Location: /task.php?id=$_POST[task]&msg=Flag%20is%20correct%2C%20but%20you%27ve%20already%20passed%20it", true, 303);
+        header("Location: /task.php?id=$task_id&msg=Flag%20is%20correct%2C%20but%20you%27ve%20already%20passed%20it", true, 303);
         exit();
     }
 
     $stmt = $pdo->prepare("INSERT INTO solvings (task_id, username, solving_time) 
                                     VALUES (:task, :username, NOW())");
-    $stmt->execute(['task' => $_POST['task'],
+    $stmt->execute(['task' => $task_id,
                     'username' => $user['username']]);
 
     $stmt = $pdo->prepare("SELECT cost
                                     FROM tasks
                                     WHERE id = :id");
-    $stmt->execute(['id' => $_POST['task']]);
+    $stmt->execute(['id' => $task_id]);
     $cost = $stmt->fetch()['cost'];
 
     $stmt = $pdo->prepare("UPDATE users
@@ -59,7 +61,7 @@
     $stmt->execute(['points' => $user['points'] + $cost,
                     'username' => $user['username']]);
 
-    header("Location: /task.php?id=$_POST[task]&msg=Flag%20accepted%21", true, 303);
+    header("Location: /task.php?id=$task_id&msg=Flag%20accepted%21", true, 303);
     exit();
 
 
