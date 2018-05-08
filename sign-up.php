@@ -10,7 +10,7 @@
 
     $pdo = get_PDO();
 
-    $username = $_POST['username'];
+    $username = filter_var($_POST['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $email = $_POST['email'];
     $password = $_POST['password'];
 
