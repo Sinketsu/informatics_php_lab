@@ -1,5 +1,6 @@
 <?php
     include_once 'utils/dbworker.php';
+    include_once 'utils/csrf.php';
 
     if ($_SERVER['REQUEST_METHOD'] != 'GET' or !isset($_GET['id'])) {
         header("Location: /error/bad_request.html", true, 303);
@@ -94,8 +95,11 @@
                     <input type="text" name="flag" class="input-group form-control mb-3 rounded-0" style="height: 30px;">
                 </div>
                 <button type="submit" class="btn btn-outline-light mb-3 font-weight-bold" >Check >></button>
-            </form>
 TASK_BODY;
+
+            set_csrf_token();
+            print "</form>\n";
+
             if (isset($_GET['msg'])) {
                 $msg = filter_var($_GET['msg'], FILTER_SANITIZE_STRING);
                 print "<div class=\"row justify-content-center\">

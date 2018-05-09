@@ -1,4 +1,9 @@
 <?php
+
+    include_once 'utils/csrf.php';
+
+    check_csrf();
+
     if ($_SERVER['REQUEST_METHOD'] != 'POST' or !isset($_POST['task']) or !isset($_POST['flag'])){
         header("Location: /error/bad_request.html", true, 303);
         exit();
