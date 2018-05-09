@@ -11,7 +11,7 @@
 
     $user = auth_get_user($_COOKIE);
     if (!$user) {
-        header("Location: /sign-in.html", true, 303);
+        header("Location: /sign-in.php", true, 303);
         exit();
     }
     $user = get_user_by_id($user);

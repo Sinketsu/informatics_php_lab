@@ -1,24 +1,33 @@
-<?php
-    include_once 'utils/dbworker.php';
-    include_once 'utils/auth.php';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
-    if ($_SERVER['REQUEST_METHOD'] != 'POST' or !isset($_POST['username']) or !isset($_POST['password'])){
-        header("Location: /error/bad_request.html", true, 303);
-        exit();
-    }
+    <title>Sign in</title>
 
-    $pdo = get_PDO();
+    <link rel="icon" href="img/favicon.png">
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/sign-in.css" type="text/css" rel="stylesheet">
+</head>
+<body class="text-center">
+    <form class="form-signin" action="sign-in-interact.php" method="post">
+        <img src="img/logo.png" id="img" alt="" width="225" height="150">
 
-    if (authenticate($username, $password)) {
-        $cookie = login($username);
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-        setcookie('sess_id', $cookie, time() + 60*60*24*14, '', '', true, true);
-        header("Location: /", true, 301);
-        exit();
-    } else {
-        header("Location: /sign-in.html", true, 303);
-        exit();
-    }
+        <label for="inputNickname" class="sr-only">Nickname</label>
+        <input type="text" id="inputNickname" class="form-control" placeholder="Nickname"
+               name="username" required autofocus>
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+               name="password" autocomplete="off" required>
+
+        <button class="btn btn-lg btn-primary btn-block my-2" type="submit">Sign in</button>
+
+        <a href="/sign-up.php">Register?</a>
+        <p class="mt-5 mb-3 text-muted">&copy; sollos</p>
+    </form>
+</body>
+</html>
