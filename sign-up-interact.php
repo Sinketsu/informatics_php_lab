@@ -1,6 +1,9 @@
 <?php
     include_once 'utils/dbworker.php';
     include_once 'utils/auth.php';
+    include_once 'utils/csrf.php';
+
+    check_csrf();
 
     if ($_SERVER['REQUEST_METHOD'] != 'POST' or !isset($_POST['username']) or !isset($_POST['password']) or
         !isset($_POST['email'])){
@@ -11,7 +14,7 @@
     $pdo = get_PDO();
 
     $username = filter_var($_POST['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $email = $_POST['email'];
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
 
     $stmt = $pdo->prepare('SELECT username
@@ -20,7 +23,7 @@
     $stmt->execute(['username' => $username]);
     $row = $stmt->fetch();
     if ($row) {
-        header("Location: /error/user_already_exist.html", true, 301);
+        header("Location: /error/user_already_exist.html", true, 303);
         exit();
     }
 
@@ -42,5 +45,5 @@
     $cookie = login($username);
     setcookie('sess_id', $cookie, time() + 60*60*24*14, '', '', true, true);
 
-    header("Location: /", true, 301);
+    header("Location: /", true, 303);
     exit();

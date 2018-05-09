@@ -49,6 +49,12 @@
                     <button class="btn btn-lg btn-primary btn-block form-control" type="submit">
                         Join!
                     </button>
+
+                    <?php
+                        include_once 'utils/csrf.php';
+
+                        set_csrf_token();
+                    ?>
                 </form>
             </div>
         </div>
