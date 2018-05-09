@@ -46,7 +46,7 @@
             $username = get_user_by_id($user_id)['username'];
 
             print "<a class=\"p-2 text-dark\">$username</a> 
-                        <a class=\"p-2 text-dark\" href=\"/logout.php?path=task.php?id=$task[id]\">Log out</a>";
+                        <a class=\"p-2 text-dark\" href=\"/logout.php?path=task.php%3Fid%3D$task[id]\">Log out</a>";
         } else {
             print '<a class="btn btn-outline-primary mx-1" href="/sign-in.php">Sign in</a>
                         <a class="btn btn-outline-primary mx-1" href="/sign-up.php">Sign up</a>';
