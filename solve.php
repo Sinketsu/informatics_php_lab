@@ -34,7 +34,7 @@
         exit();
     }
 
-    if ($task['flag'] !== $_POST['flag']) {
+    if (! hash_equals($task['flag'], hash("sha384", $_POST['flag']))) {
         header("Location: /task.php?id=$task_id&msg=Incorrect%20flag%20%3A%28", true, 303);
         exit();
     }
