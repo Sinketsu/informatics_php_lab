@@ -12,7 +12,8 @@
                                     WHERE session_key = :sess_id");
     $stmt->execute(['sess_id' => $_COOKIE['sess_id']]);
 
-    unset($_COOKIE['sess_id']);
+    // unset cookie
+    setcookie('sess_id', '', time() - 3600);
 
     $path = isset($_GET['path']) ? filter_var($_GET['path'], FILTER_SANITIZE_URL) : '/';
     $url = parse_url($path);
